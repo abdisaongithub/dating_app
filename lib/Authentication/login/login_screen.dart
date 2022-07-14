@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Center(
                   child: Text(
-                    'SIGN UP',
+                    'SIGN IN',
                     style: GoogleFonts.montserrat(
                       color: Colors.white,
                       fontSize: 42,
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      debugPrint('SIGN UP');
+                      debugPrint('SIGN IN');
                     },
                     child: Container(
                       height: 40,

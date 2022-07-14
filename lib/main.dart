@@ -1,4 +1,5 @@
 import 'package:dating_app/Authentication/login/login_screen.dart';
+import 'package:dating_app/Onboarding/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/': (context) => const LandingScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
       },
     );
   }
