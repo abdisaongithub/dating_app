@@ -1,5 +1,4 @@
 import 'package:dating_app/Authentication/forgot_password/forgot_password_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/verify_code_screen.dart';
 import 'package:dating_app/Authentication/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,7 +76,7 @@ class _ChangeForgottenPasswordScreenState
                 left: 20,
               ),
               child: Text(
-                'Enter recovery email',
+                'Enter new password',
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
@@ -89,18 +88,48 @@ class _ChangeForgottenPasswordScreenState
               height: 20,
             ),
             const AuthInputField(
-              label: 'johndoe@example.com',
+              label: '**************',
+              obscure: true,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+              ),
+              child: Text(
+                'Confirm new password',
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const AuthInputField(
+              label: '**************',
+              obscure: true,
             ),
             const SizedBox(
               height: 20,
             ),
             Center(
               child: GradientButton(
-                label: 'Send Code',
+                leading: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                label: 'Go Back To Login',
                 onTap: () {
-                  Navigator.pushReplacementNamed(
+                  Navigator.popUntil(
                     context,
-                    VerifyCodeScreen.id,
+                    ModalRoute.withName(
+                      LoginScreen.id,
+                    ),
                   );
                 },
               ),

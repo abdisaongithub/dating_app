@@ -1,5 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:dating_app/Account/account_screen.dart';
+import 'package:dating_app/Authentication/forgot_password/forgot_password_screen.dart';
+import 'package:dating_app/Authentication/register/register_screen.dart';
+import 'package:dating_app/Common/theme_provider.dart';
+import 'package:dating_app/Onboarding/setup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -22,15 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(41, 171, 226, 0.6),
-              Color.fromRGBO(154, 53, 251, 0),
-            ],
-          ),
+        decoration: BoxDecoration(
+          gradient: Theme.of(context).custom.gradientBackground,
         ),
         child: Center(
           child: SingleChildScrollView(
@@ -86,12 +84,38 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscure: true,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        ForgotPasswordScreen.id,
+                      );
+                    },
+                    child: Text(
+                      'Forgot Password?',
+                      style: GoogleFonts.montserrat(
+                        color: const Color.fromRGBO(0, 179, 255, 1),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      debugPrint('SIGN IN');
+                      Navigator.pushNamed(
+                        context,
+                        SetupScreen.id,
+                      );
                     },
                     child: Container(
                       height: 40,
@@ -115,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       child: const Center(
                         child: Text(
-                          'SIGN UP',
+                          'SIGN IN',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -160,7 +184,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     BrandLogos.google,
                     size: 22,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RegisterScreen.id,
+                    );
+                  },
                 ),
                 SocialSignIn(
                   label: 'Sign In With Apple ID',
@@ -168,7 +197,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     BrandLogos.apple,
                     size: 22,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AccountScreen.id,
+                    );
+                  },
                 ),
               ],
             ),
@@ -193,32 +227,35 @@ class SocialSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      margin: const EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: 10,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(50),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            offset: const Offset(5, 5),
-            blurRadius: 10,
-            spreadRadius: 5,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label),
-          icon,
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 40,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 40,
+          vertical: 10,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(50),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(5, 5),
+              blurRadius: 10,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(label),
+            icon,
+          ],
+        ),
       ),
     );
   }
