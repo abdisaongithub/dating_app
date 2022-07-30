@@ -1,4 +1,5 @@
 import 'package:dating_app/Common/theme_provider.dart';
+import 'package:dating_app/Main/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_slider/flutter_multi_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -403,7 +404,7 @@ class _SetupScreenState extends State<SetupScreen> {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.pushNamed(context, );
+                Navigator.pushNamed(context, MenuScreen.id);
               },
               child: Container(
                 height: 40,
