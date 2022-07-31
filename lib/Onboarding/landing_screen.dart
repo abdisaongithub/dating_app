@@ -1,4 +1,4 @@
-import 'package:dating_app/Authentication/login/login_screen.dart';
+import 'package:dating_app/Main/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,9 +32,13 @@ class _LandingScreenState extends State<LandingScreen> {
               alignment: Alignment.bottomCenter,
               child: GestureDetector(
                 onTap: () {
+                  // Navigator.pushNamed(
+                  //   context,
+                  //   LoginScreen.id,
+                  // );
                   Navigator.pushNamed(
                     context,
-                    LoginScreen.id,
+                    MenuScreen.id,
                   );
                 },
                 child: Container(
