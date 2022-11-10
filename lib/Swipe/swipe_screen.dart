@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:dating_app/Common/theme_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:swipe_cards/swipe_cards.dart';
@@ -35,8 +36,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
             name: 'Semira',
             age: 23,
             image: 'assets/images/semira.png',
-            bio:
-                'Some bio text Some bio text Some bio text Some bio text Some bio text ',
+            bio: 'Born and raised in Harar, \nCity of Love, Harmony and Care',
             city: 'Harar',
             country: 'Ethiopia',
             zodiac: 'Aquarius',
@@ -45,7 +45,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
             onSuperLike: () => _matchEngine.currentItem!.superLike(),
           ),
           likeAction: () {
-            _scaffoldKey.currentState!.showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Liked ${_names[i]}"),
                 duration: const Duration(milliseconds: 500),
@@ -53,7 +53,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
             );
           },
           nopeAction: () {
-            _scaffoldKey.currentState!.showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Nope ${_names[i]}"),
                 duration: const Duration(milliseconds: 500),
@@ -61,7 +61,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
             );
           },
           superlikeAction: () {
-            _scaffoldKey.currentState!.showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Super liked ${_names[i]}"),
                 duration: const Duration(milliseconds: 500),
@@ -108,13 +108,15 @@ class _SwipeScreenState extends State<SwipeScreen> {
                 return _swipeItems[index].content;
               },
               onStackFinished: () {
-                _scaffoldKey.currentState?.showSnackBar(const SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Stack Finished"),
                   duration: Duration(milliseconds: 500),
                 ));
               },
               itemChanged: (SwipeItem item, int index) {
-                print("item: ${item.content.toString()}, index: $index");
+                if (kDebugMode) {
+                  print("item: ${item.content.toString()}, index: $index");
+                }
               },
               upSwipeAllowed: true,
               fillSpace: true,
@@ -168,6 +170,12 @@ class Candidate extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.3),
         borderRadius: BorderRadius.circular(15),
+        gradient: const LinearGradient(
+          colors: [
+            Colors.white,
+            Colors.white,
+          ],
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -265,12 +273,12 @@ class Candidate extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.black,
+                      color: Colors.blue,
                     ),
                   ),
                   child: const Icon(
                     Icons.undo,
-                    color: Colors.white,
+                    color: Colors.blue,
                   ),
                 ),
                 GestureDetector(
@@ -281,12 +289,12 @@ class Candidate extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.black,
+                        color: Colors.red,
                       ),
                     ),
                     child: const Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: Colors.red,
                       size: 34,
                     ),
                   ),
@@ -299,7 +307,7 @@ class Candidate extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.black,
+                        color: Colors.amber,
                       ),
                     ),
                     child: const Icon(
@@ -317,12 +325,12 @@ class Candidate extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.black,
+                        color: Colors.red,
                       ),
                     ),
                     child: const Icon(
                       IonIcons.heart,
-                      color: Colors.white,
+                      color: Colors.red,
                       size: 34,
                     ),
                   ),
@@ -338,7 +346,7 @@ class Candidate extends StatelessWidget {
                   ),
                   child: const Icon(
                     Icons.ac_unit_sharp,
-                    color: Colors.white,
+                    color: Colors.blue,
                   ),
                 ),
               ],
