@@ -9,7 +9,7 @@ import 'package:swipe_cards/swipe_cards.dart';
 class SwipeScreen extends StatefulWidget {
   static String id = 'SwipeScreen';
 
-  const SwipeScreen({Key? key}) : super(key: key);
+  const SwipeScreen({super.key});
 
   @override
   _SwipeScreenState createState() => _SwipeScreenState();
@@ -131,7 +131,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
 class Candidate extends StatelessWidget {
   static String id = 'Candidate';
   const Candidate({
-    Key? key,
+    super.key,
     required this.name,
     required this.age,
     required this.zodiac,
@@ -142,7 +142,7 @@ class Candidate extends StatelessWidget {
     required this.onLike,
     required this.onDisLike,
     required this.onSuperLike,
-  }) : super(key: key);
+  });
 
   final String name;
   final int age;

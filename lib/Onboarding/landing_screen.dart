@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LandingScreen extends StatefulWidget {
   static String id = 'LandingScreen';
-  const LandingScreen({Key? key}) : super(key: key);
+  const LandingScreen({super.key});
 
   @override
   _LandingScreenState createState() => _LandingScreenState();

@@ -50,8 +50,11 @@ class _MenuScreenState extends State<MenuScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      position = getButtonPosition(2, MediaQuery.of(context).size.width);
+      setState(() {
+        position = getButtonPosition(2, MediaQuery.of(context).size.width);
+      });
     });
+
   }
 
   @override
@@ -63,15 +66,16 @@ class _MenuScreenState extends State<MenuScreen> {
           onTap: () {
             setState(() {
               index = 0;
-              position =
-                  getButtonPosition(0, MediaQuery.of(context).size.width);
+              position = getButtonPosition(0, MediaQuery.of(context).size.width);
             });
           },
-          child: const Visibility(
-            visible: true,
-            child: Icon(
-              Icons.person,
-              color: Colors.white,
+          child: Container(
+            child: const Visibility(
+              visible: true,
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -81,8 +85,7 @@ class _MenuScreenState extends State<MenuScreen> {
           onTap: () {
             setState(() {
               index = 1;
-              position =
-                  getButtonPosition(1, MediaQuery.of(context).size.width);
+              position = getButtonPosition(1, MediaQuery.of(context).size.width);
             });
           },
           child: const Visibility(
@@ -99,8 +102,7 @@ class _MenuScreenState extends State<MenuScreen> {
           onTap: () {
             setState(() {
               index = 2;
-              position =
-                  getButtonPosition(2, MediaQuery.of(context).size.width);
+              position = getButtonPosition(2, MediaQuery.of(context).size.width);
             });
           },
           child: const Visibility(
@@ -117,14 +119,13 @@ class _MenuScreenState extends State<MenuScreen> {
           onTap: () {
             setState(() {
               index = 3;
-              position =
-                  getButtonPosition(3, MediaQuery.of(context).size.width);
+              position = getButtonPosition(3, MediaQuery.of(context).size.width);
             });
           },
           child: const Visibility(
             visible: true,
             child: Icon(
-              IonIcons.chat_bubble,
+              IonIcons.chatbubble,
               color: Colors.white,
             ),
           ),
@@ -135,8 +136,7 @@ class _MenuScreenState extends State<MenuScreen> {
           onTap: () {
             setState(() {
               index = 4;
-              position =
-                  getButtonPosition(4, MediaQuery.of(context).size.width);
+              position = getButtonPosition(4, MediaQuery.of(context).size.width);
             });
           },
           child: const Visibility(
@@ -186,6 +186,9 @@ class _MenuScreenState extends State<MenuScreen> {
                           width: MediaQuery.of(context).size.width,
                           height: 60,
                           position: index,
+                          onChange: () {
+
+                          },
                         ),
                         clipBehavior: Clip.hardEdge,
                         child: Container(
@@ -224,7 +227,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           child: const Center(
                             child: Icon(
-                              IonIcons.chat_bubble,
+                              IonIcons.chatbubble,
                               color: Colors.black,
                               size: 32,
                             ),
@@ -247,11 +250,13 @@ class NotchClipper extends CustomClipper<Path> {
   final double width;
   final double height;
   final int position;
+  final Function() onChange;
 
   NotchClipper({
     required this.width,
     required this.height,
     required this.position,
+    required this.onChange,
   });
 
   getCenter(position) {

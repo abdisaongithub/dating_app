@@ -180,8 +180,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SocialSignIn(
                   label: 'Continue With Google',
-                  icon: BrandLogo(
-                    BrandLogos.google,
+                  icon: Logo(
+                    Logos.google,
                     size: 22,
                   ),
                   onTap: () {
@@ -193,8 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SocialSignIn(
                   label: 'Sign In With Apple ID',
-                  icon: BrandLogo(
-                    BrandLogos.apple,
+                  icon: Logo(
+                    Logos.apple,
                     size: 22,
                   ),
                   onTap: () {
@@ -222,7 +222,7 @@ class SocialSignIn extends StatelessWidget {
   }) : super(key: key);
 
   final String label;
-  final BrandLogo icon;
+  final Logo icon;
   final VoidCallback onTap;
 
   @override

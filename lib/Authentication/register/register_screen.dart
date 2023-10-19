@@ -173,16 +173,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 SocialSignIn(
                   label: 'Continue With Google',
-                  icon: BrandLogo(
-                    BrandLogos.google,
+                  icon: Logo(
+                    Logos.google,
                     size: 22,
                   ),
                   onTap: () {},
                 ),
                 SocialSignIn(
                   label: 'Sign In With Apple ID',
-                  icon: BrandLogo(
-                    BrandLogos.apple,
+                  icon: Logo(
+                    Logos.apple,
                     size: 22,
                   ),
                   onTap: () {},

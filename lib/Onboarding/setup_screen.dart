@@ -95,7 +95,7 @@ class _SetupScreenState extends State<SetupScreen> {
                   const SizedBox(
                     width: 100,
                   ),
-                  FlagIcon(FlagIcons.ethiopia),
+                  Flag(Flags.ethiopia),
                   const SizedBox(
                     width: 20,
                   ),

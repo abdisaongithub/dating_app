@@ -105,7 +105,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         const SizedBox(
                           width: 100,
                         ),
-                        FlagIcon(FlagIcons.ethiopia),
+                        Flag(Flags.ethiopia),
                         const SizedBox(
                           width: 20,
                         ),
