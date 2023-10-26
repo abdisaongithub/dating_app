@@ -6,15 +6,29 @@ import 'package:icons_plus/icons_plus.dart';
 class MenuScreen extends StatefulWidget {
   static String id = 'MenuScreen';
 
-  const MenuScreen({Key? key}) : super(key: key);
+  const MenuScreen({super.key});
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
-  int index = 0;
+class _MenuScreenState extends State<MenuScreen> with SingleTickerProviderStateMixin {
+  int index = 2;
   double position = 0;
+  double previousPosition = 0;
+  final duration = const Duration(milliseconds: 300);
+  final curve = Curves.ease;
+
+
+  @override
+  void initState() {
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      changePage(2);
+    });
+
+    super.initState();
+  }
 
   getButtonPosition(position, width) {
     switch (position) {
@@ -45,37 +59,57 @@ class _MenuScreenState extends State<MenuScreen> {
     ),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      setState(() {
-        position = getButtonPosition(2, MediaQuery.of(context).size.width);
-      });
+  changePage(newIndex){
+    setState(() {
+      index = newIndex;
+      previousPosition = position;
+      position = getButtonPosition(newIndex, MediaQuery.of(context).size.width);
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final List<Widget> icons = [
+    final List<Widget> floatingButtonIcons = [
+      const Icon(
+        IonIcons.person,
+        color: Colors.black,
+        size: 22,
+      ),
+      const Icon(
+        IonIcons.notifications,
+        color: Colors.black,
+        size: 22,
+      ),
+      const Icon(
+        IonIcons.heart,
+        color: Colors.black,
+        size: 22,
+      ),
+      const Icon(
+        IonIcons.chatbubble,
+        color: Colors.black,
+        size: 22,
+      ),
+      const Icon(
+        IonIcons.settings,
+        color: Colors.black,
+        size: 22,
+      ),
+    ];
+
+    final List<Widget> bottomNavigationButtons = [
       Expanded(
         child: GestureDetector(
           onTap: () {
-            setState(() {
-              index = 0;
-              position = getButtonPosition(0, MediaQuery.of(context).size.width);
-            });
+            changePage(0);
           },
-          child: Container(
-            child: const Visibility(
-              visible: true,
-              child: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: index != 0 ? 1.0 : 0.0,
+            child: const Icon(
+              Icons.person,
+              color: Colors.white,
             ),
           ),
         ),
@@ -83,14 +117,12 @@ class _MenuScreenState extends State<MenuScreen> {
       Expanded(
         child: GestureDetector(
           onTap: () {
-            setState(() {
-              index = 1;
-              position = getButtonPosition(1, MediaQuery.of(context).size.width);
-            });
+            changePage(1);
           },
-          child: const Visibility(
-            visible: true,
-            child: Icon(
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: index != 1 ? 1.0 : 0.0,
+            child: const Icon(
               Icons.notifications,
               color: Colors.white,
             ),
@@ -100,14 +132,12 @@ class _MenuScreenState extends State<MenuScreen> {
       Expanded(
         child: GestureDetector(
           onTap: () {
-            setState(() {
-              index = 2;
-              position = getButtonPosition(2, MediaQuery.of(context).size.width);
-            });
+            changePage(2);
           },
-          child: const Visibility(
-            visible: true,
-            child: Icon(
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: index != 2 ? 1.0 : 0.0,
+            child: const Icon(
               IonIcons.heart,
               color: Colors.white,
             ),
@@ -117,14 +147,12 @@ class _MenuScreenState extends State<MenuScreen> {
       Expanded(
         child: GestureDetector(
           onTap: () {
-            setState(() {
-              index = 3;
-              position = getButtonPosition(3, MediaQuery.of(context).size.width);
-            });
+            changePage(3);
           },
-          child: const Visibility(
-            visible: true,
-            child: Icon(
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: index != 3 ? 1.0 : 0.0,
+            child: const Icon(
               IonIcons.chatbubble,
               color: Colors.white,
             ),
@@ -134,14 +162,12 @@ class _MenuScreenState extends State<MenuScreen> {
       Expanded(
         child: GestureDetector(
           onTap: () {
-            setState(() {
-              index = 4;
-              position = getButtonPosition(4, MediaQuery.of(context).size.width);
-            });
+            changePage(4);
           },
-          child: const Visibility(
-            visible: true,
-            child: Icon(
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: index != 4 ? 1.0 : 0.0,
+            child: const Icon(
               IonIcons.settings,
               color: Colors.white,
             ),
@@ -153,9 +179,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return WillPopScope(
       onWillPop: () async {
         if (index != 2) {
-          setState(() {
-            index = 2;
-          });
+          changePage(2);
           return false;
         }
         return true;
@@ -181,31 +205,37 @@ class _MenuScreenState extends State<MenuScreen> {
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: ClipPath(
-                        clipper: NotchClipper(
-                          width: MediaQuery.of(context).size.width,
-                          height: 60,
-                          position: index,
-                          onChange: () {
-
-                          },
+                      child: TweenAnimationBuilder(
+                        duration: duration,
+                        curve: curve,
+                        tween: Tween<double>(
+                          begin: previousPosition,
+                          end: getButtonPosition(index, MediaQuery.of(context).size.width),
                         ),
-                        clipBehavior: Clip.hardEdge,
-                        child: Container(
-                          color: Colors.black,
-                          height: 60,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: icons,
-                          ),
-                        ),
+                        builder: (context, value, widget){
+                          return ClipPath(
+                            clipper: NotchClipper(
+                              height: 60,
+                              center: value,
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: Container(
+                              color: Colors.black,
+                              height: 60,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: bottomNavigationButtons,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     AnimatedPositioned(
-                      curve: Curves.ease,
+                      curve: curve,
                       top: -30,
                       left: position,
-                      duration: const Duration(milliseconds: 500),
+                      duration: duration,
                       onEnd: () {
                         setState(() {
                           debugPrint(index.toString());
@@ -213,9 +243,7 @@ class _MenuScreenState extends State<MenuScreen> {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          setState(() {
-                            position = (size.width / 2) - 30;
-                          });
+
                         },
                         child: Container(
                           height: 60,
@@ -225,11 +253,10 @@ class _MenuScreenState extends State<MenuScreen> {
                             shape: BoxShape.circle,
                             color: Color.fromRGBO(217, 217, 217, 1),
                           ),
-                          child: const Center(
-                            child: Icon(
-                              IonIcons.chatbubble,
-                              color: Colors.black,
-                              size: 32,
+                          child: Center(
+                            child: AnimatedSwitcher(
+                              duration: duration,
+                              child: floatingButtonIcons[index],
                             ),
                           ),
                         ),
@@ -247,32 +274,17 @@ class _MenuScreenState extends State<MenuScreen> {
 }
 
 class NotchClipper extends CustomClipper<Path> {
-  final double width;
+  // final double width;
   final double height;
-  final int position;
-  final Function() onChange;
+  final double center;
+
+  // final int position;
+  // final Function() onChange;
 
   NotchClipper({
-    required this.width,
     required this.height,
-    required this.position,
-    required this.onChange,
+    required this.center,
   });
-
-  getCenter(position) {
-    switch (position) {
-      case 0:
-        return (width / 2.0) * 0.33333 - 20;
-      case 1:
-        return (width / 2.0) * 0.666666 - 20;
-      case 2:
-        return width * 0.5;
-      case 3:
-        return (width / 2.0) + ((width / 2) * 0.33333) + 20;
-      case 4:
-        return (width / 2.0) + ((width / 2) * 0.66666) + 20;
-    }
-  }
 
   @override
   Path getClip(Size size) {
@@ -280,9 +292,9 @@ class NotchClipper extends CustomClipper<Path> {
     final h = size.height;
     final path = Path();
 
-    path.lineTo(getCenter(position) - 40, 0);
+    path.lineTo(center - 10, 0);
     path.arcToPoint(
-      Offset(getCenter(position) + 40, 0),
+      Offset(center + 70, 0),
       radius: const Radius.circular(10),
       clockwise: false,
     );

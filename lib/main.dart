@@ -1,16 +1,15 @@
-import 'package:dating_app/Account/account_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/change_forgotten_password_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/forgot_password_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/verify_code_screen.dart';
-import 'package:dating_app/Authentication/login/login_screen.dart';
-import 'package:dating_app/Authentication/register/register_screen.dart';
-import 'package:dating_app/Main/menu_screen.dart';
-import 'package:dating_app/Onboarding/landing_screen.dart';
-import 'package:dating_app/Onboarding/setup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'Account/account_screen.dart';
+import 'Authentication/forgot_password/change_forgotten_password_screen.dart';
+import 'Authentication/forgot_password/forgot_password_screen.dart';
+import 'Authentication/forgot_password/verify_code_screen.dart';
+import 'Authentication/login/login_screen.dart';
+import 'Authentication/register/register_screen.dart';
 import 'Common/theme_provider.dart';
+import 'Main/menu_screen.dart';
+import 'Onboarding/landing_screen.dart';
+import 'Onboarding/setup_screen.dart';
 
 void main() {
   runApp(

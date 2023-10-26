@@ -120,6 +120,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
               },
               upSwipeAllowed: true,
               fillSpace: true,
+              likeTag: const Icon(Icons.satellite),
             ),
           ),
         ],
@@ -130,6 +131,7 @@ class _SwipeScreenState extends State<SwipeScreen> {
 
 class Candidate extends StatelessWidget {
   static String id = 'Candidate';
+
   const Candidate({
     super.key,
     required this.name,
@@ -196,164 +198,197 @@ class Candidate extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
+          Container(
+            decoration: const BoxDecoration(
+              // color: Colors.white.withOpacity(0.3),
+              gradient: RadialGradient(
+                // begin: Alignment.topLeft,
+                // end: Alignment.bottomRight,
+                radius: 1.5,
+                focalRadius: 0.2,
+                transform: GradientRotation(2),
+                // TODO: git it an offset
+                // center: Alignment.topLeft,
+                colors: [
+                  Color.fromRGBO(232, 65, 241, 1),
+                  Color.fromRGBO(142, 168, 247, 1),
+                ],
+                stops: [0.2, 0.7],
+                focal: Alignment.bottomRight,
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '$name, $age',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
+                Container(
+                  height: 10,
+                  decoration: const BoxDecoration(
+                      // color: Colors.white,
+                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '$name, $age',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                        ),
+                      ),
+                      const Expanded(child: SizedBox()),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 6,
+                          horizontal: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          zodiac,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const Expanded(child: SizedBox()),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 6,
-                    horizontal: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.3),
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    zodiac,
+                    '$city, $country',
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    bio,
                     style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              '$city, $country',
-              style: const TextStyle(
-                color: Colors.black,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              bio,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  height: 35,
-                  width: 35,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.blue,
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.undo,
-                    color: Colors.blue,
-                  ),
+                const SizedBox(
+                  height: 10,
                 ),
-                GestureDetector(
-                  onTap: onDisLike,
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.blue,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.undo,
+                          color: Colors.blue,
+                        ),
                       ),
-                    ),
-                    child: const Icon(
-                      Icons.close,
-                      color: Colors.red,
-                      size: 34,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: onSuperLike,
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.amber,
+                      GestureDetector(
+                        onTap: onDisLike,
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.red,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.close,
+                            color: Colors.red,
+                            size: 34,
+                          ),
+                        ),
                       ),
-                    ),
-                    child: const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                      size: 44,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: onLike,
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.red,
+                      GestureDetector(
+                        onTap: onSuperLike,
+                        child: Container(
+                          height: 55,
+                          width: 55,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.amber,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: 44,
+                          ),
+                        ),
                       ),
-                    ),
-                    child: const Icon(
-                      IonIcons.heart,
-                      color: Colors.red,
-                      size: 34,
-                    ),
+                      GestureDetector(
+                        onTap: onLike,
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.red,
+                            ),
+                          ),
+                          child: const Icon(
+                            IonIcons.heart,
+                            color: Colors.red,
+                            size: 34,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.ac_unit_sharp,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  height: 35,
-                  width: 35,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.ac_unit_sharp,
-                    color: Colors.blue,
-                  ),
+                  height: 10,
+                  decoration: const BoxDecoration(
+                      // color: Colors.white,
+                      ),
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 10,
           ),
         ],
       ),
