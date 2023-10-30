@@ -1,50 +1,41 @@
-import 'package:dating_app/Account/account_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/change_forgotten_password_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/forgot_password_screen.dart';
-import 'package:dating_app/Authentication/forgot_password/verify_code_screen.dart';
-import 'package:dating_app/Authentication/login/login_screen.dart';
-import 'package:dating_app/Authentication/register/register_screen.dart';
-import 'package:dating_app/Main/menu_screen.dart';
-import 'package:dating_app/Onboarding/landing_screen.dart';
-import 'package:dating_app/Onboarding/setup_screen.dart';
+import 'package:dio/dio.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Common/theme_provider.dart';
+import 'app.dart';
+import 'constants/prefs_keys.dart';
+import 'network/client.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
+
+  _setupApiClient();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  final prefs = await SharedPreferences.getInstance();
+  final localeStr = prefs.getString(kPrefsAppLocale);
+  final showHome = prefs.getBool('showHome') ?? false;
+  Locale locale = Locale(localeStr ?? 'en');
+
   runApp(
-    const ProviderScope(
-      child: MyApp(),
+    MyApp(
+      appLocale: locale,
+      prefs: prefs,
+      showHome: showHome,
     ),
   );
 }
 
-class MyApp extends ConsumerWidget {
-  const MyApp({Key? key}) : super(key: key);
+void _setupApiClient() {
+  final apiClient = ApiClientImpl(Dio());
+  GetIt.I.registerSingleton<ApiClient>(apiClient);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      title: 'Dating App',
-      themeMode: ref.watch(themeModeProvider),
-      theme: ref.watch(lightThemeProvider),
-      darkTheme: ref.watch(darkThemeProvider),
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const LandingScreen(),
-        LoginScreen.id: (context) => const LoginScreen(),
-        ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
-        VerifyCodeScreen.id: (context) => const VerifyCodeScreen(),
-        ChangeForgottenPasswordScreen.id: (context) =>
-            const ChangeForgottenPasswordScreen(),
-        RegisterScreen.id: (context) => const RegisterScreen(),
-        SetupScreen.id: (context) => const SetupScreen(),
-        AccountScreen.id: (context) => const AccountScreen(),
-        MenuScreen.id: (context) => const MenuScreen(),
-        // SwipeScreen.id: (context) => const SwipeScreen(),
-      },
-    );
-  }
+  // final storeApiClient = StoreApiClientImpl(Dio());
+  // GetIt.I.registerSingleton<StoreApiClient>(storeApiClient);
 }
