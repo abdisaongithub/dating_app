@@ -1,4 +1,7 @@
+import 'package:dating_app/features/auth/sign_up_or_sign_in_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../common/widgets/big_text.dart';
 
 class OnboardingScreen extends StatefulWidget {
   static String id = 'OnboardingScreen';
@@ -61,24 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Container(
-                width: MediaQuery.sizeOf(context).width,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
-                decoration: const BoxDecoration(
-                  color: Color(0xFFFB6009),
-                  // borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
-                  'Find a person',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              const BigText(text: 'Find a person',),
               const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -164,6 +150,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: InkWell(
                   onTap: () {
                     if (over18) {
+                      Navigator.pushNamed(context, SignUpOrSignInScreen.id);
                       debugPrint('Go to next page');
                     }
                   },
@@ -205,3 +192,4 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
+

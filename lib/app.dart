@@ -1,3 +1,5 @@
+import 'package:dating_app/features/auth/sign_up_or_sign_in_screen.dart';
+import 'package:dating_app/features/auth/sign_up_with_email_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -90,6 +92,8 @@ class _DatingAppState extends State<DatingApp> {
             initialRoute: '/',
             routes: {
               '/': (context) => const OnboardingScreen(),
+              SignUpOrSignInScreen.id: (context) => const SignUpOrSignInScreen(),
+              SignUpWithEmailScreen.id: (context) => const SignUpWithEmailScreen(),
             },
             locale: state,
             localizationsDelegates: const [
