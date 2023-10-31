@@ -87,7 +87,10 @@ class _DatingAppState extends State<DatingApp> {
             themeMode: ThemeMode.light,
             theme: CustomTheme.lightTheme,
             darkTheme: CustomTheme.lightTheme,
-            home: const OnboardingScreen(),
+            initialRoute: '/',
+            routes: {
+              '/': (context) => const OnboardingScreen(),
+            },
             locale: state,
             localizationsDelegates: const [
               // AppLocalizations.delegate,
