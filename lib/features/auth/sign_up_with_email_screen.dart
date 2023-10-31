@@ -1,6 +1,8 @@
 import 'package:dating_app/common/widgets/big_text.dart';
 import 'package:flutter/material.dart';
 
+import 'sign_up_or_sign_in_screen.dart';
+
 class SignUpWithEmailScreen extends StatefulWidget {
   static String id = 'SignUpWithEmailScreen';
 
@@ -151,42 +153,6 @@ class _SignUpWithEmailScreenState extends State<SignUpWithEmailScreen> {
               const SizedBox(height: 50),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class OtpCodeInputField extends StatelessWidget {
-  const OtpCodeInputField({
-    super.key,
-    required this.emailController,
-  });
-
-  final TextEditingController emailController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 30,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 2,
-        vertical: 0,
-      ),
-      decoration: const BoxDecoration(
-        // color: Color.fromRGBO(195, 195, 195, 0.27),
-        // borderRadius: BorderRadius.circular(20),
-      ),
-      child: Center(
-        child: TextFormField(
-          controller: emailController,
-          decoration: const InputDecoration(
-            // border: InputBorder.,
-            counter: null,
-          ),
-          // maxLength: 1,
-          // maxLengthEnforcement: MaxLengthEnforcement.enforced,
-          keyboardType: TextInputType.number,
         ),
       ),
     );

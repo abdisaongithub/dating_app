@@ -1,5 +1,6 @@
 import 'package:dating_app/common/widgets/big_text.dart';
 import 'package:dating_app/features/auth/sign_up_with_email_screen.dart';
+import 'package:dating_app/features/auth/sign_up_with_phone_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUpOrSignInScreen extends StatefulWidget {
@@ -42,24 +43,29 @@ class _SignUpOrSignInScreenState extends State<SignUpOrSignInScreen> {
                 fontSize: 46,
               ),
               const Expanded(child: SizedBox(height: 20)),
-              Center(
-                child: Container(
-                  // width: 160,
-                  height: 50,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(66, 66, 66, 1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Continue with Phone',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, SignUpWithPhoneScreen.id);
+                },
+                child: Center(
+                  child: Container(
+                    // width: 160,
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(66, 66, 66, 1),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Continue with Phone',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),
@@ -208,8 +214,9 @@ class OtpCodeInputField extends StatelessWidget {
           decoration: const InputDecoration(
             // border: InputBorder.,
             counter: null,
+            counterText: "",
           ),
-          // maxLength: 1,
+          maxLength: 1,
           // maxLengthEnforcement: MaxLengthEnforcement.enforced,
           keyboardType: TextInputType.number,
         ),

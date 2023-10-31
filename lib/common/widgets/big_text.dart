@@ -6,16 +6,18 @@ class BigText extends StatelessWidget {
     required this.text,
     this.orangeBackground = true,
     this.fontSize = 50,
+    this.width,
   });
 
   final String text;
   final bool orangeBackground;
   final double fontSize;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.sizeOf(context).width,
+      width: width ?? MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
         vertical: 4,
