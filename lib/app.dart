@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'common/language/language_cubit.dart';
+import 'features/auth/sign_in_screen.dart';
 import 'features/onboarding_screen.dart';
 import 'features/splash_screen.dart';
 import 'network/client.dart';
@@ -96,6 +97,7 @@ class _DatingAppState extends State<DatingApp> {
               SignUpOrSignInScreen.id: (context) => const SignUpOrSignInScreen(),
               SignUpWithEmailScreen.id: (context) => const SignUpWithEmailScreen(),
               SignUpWithPhoneScreen.id: (context) => const SignUpWithPhoneScreen(),
+              SignInScreen.id: (context) => const SignInScreen(),
             },
             locale: state,
             localizationsDelegates: const [

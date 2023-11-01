@@ -294,7 +294,7 @@ class PhoneNumberInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 18,
+      width: 20,
       padding: const EdgeInsets.symmetric(
         horizontal: 2,
         vertical: 0,
@@ -310,10 +310,16 @@ class PhoneNumberInputField extends StatelessWidget {
             // border: InputBorder.,
             counter: null,
             counterText: "",
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            // constraints: BoxConstraints(maxHeight: 40),
+          ),
+          style: const TextStyle(
+            fontSize: 18,
           ),
           maxLength: 1,
           // maxLengthEnforcement: MaxLengthEnforcement.enforced,
           keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
         ),
       ),
     );

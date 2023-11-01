@@ -3,6 +3,8 @@ import 'package:dating_app/features/auth/sign_up_with_email_screen.dart';
 import 'package:dating_app/features/auth/sign_up_with_phone_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'sign_in_screen.dart';
+
 class SignUpOrSignInScreen extends StatefulWidget {
   static String id = 'SignUpScreen';
 
@@ -153,7 +155,7 @@ class _SignUpOrSignInScreenState extends State<SignUpOrSignInScreen> {
                   ),
                   InkWell(
                     onTap: (){
-                      // Navigator.pushNamed(context, SignInScreen.id);
+                      Navigator.pushNamed(context, SignInScreen.id);
                     },
                     child: Container(
                       // width: 160,
@@ -215,6 +217,10 @@ class OtpCodeInputField extends StatelessWidget {
             // border: InputBorder.,
             counter: null,
             counterText: "",
+          ),
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 18,
           ),
           maxLength: 1,
           // maxLengthEnforcement: MaxLengthEnforcement.enforced,
