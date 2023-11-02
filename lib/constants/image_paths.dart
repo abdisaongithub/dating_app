@@ -6,3 +6,12 @@ class SvgPaths {
   static const cartIcon = "assets/svg/notification-shopping-cart.svg";
   static const currentLocation = "assets/svg/current-location.svg";
 }
+
+class PngPaths {
+  static const String icon = 'assets/images';
+  static const String art = 'assets/images';
+  static const user = "$icon/icons/user.png";
+  static const art1 = "$art/art/art1.png";
+  static const pin = "$art/art/art-pin.png";
+  static const map = "$art/art/art-map.png";
+}

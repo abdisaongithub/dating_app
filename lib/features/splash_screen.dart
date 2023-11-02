@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../constants/svg_paths.dart';
+import '../constants/image_paths.dart';
 import '../util/maps_util.dart';
 
 class SplashScreen extends StatefulWidget {

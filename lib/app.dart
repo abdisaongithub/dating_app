@@ -1,6 +1,7 @@
 import 'package:dating_app/features/auth/sign_up_or_sign_in_screen.dart';
 import 'package:dating_app/features/auth/sign_up_with_email_screen.dart';
 import 'package:dating_app/features/auth/sign_up_with_phone_screen.dart';
+import 'package:dating_app/features/setup/setup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -100,6 +101,7 @@ class _DatingAppState extends State<DatingApp> {
               SignUpWithPhoneScreen.id: (context) => const SignUpWithPhoneScreen(),
               SignInScreen.id: (context) => const SignInScreen(),
               LandingScreen.id: (context) => const LandingScreen(),
+              SetupScreen.id: (context) => const SetupScreen(),
             },
             locale: state,
             localizationsDelegates: const [

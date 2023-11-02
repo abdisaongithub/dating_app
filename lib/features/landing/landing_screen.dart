@@ -1,7 +1,7 @@
-import 'package:dating_app/features/auth/sign_up_or_sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/widgets/big_text.dart';
+import '../setup/setup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   static String id = 'LandingScreen';
@@ -13,7 +13,6 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-  bool over18 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -115,10 +114,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   const SizedBox(width: 10,),
                   InkWell(
                     onTap: () {
-                      if (over18) {
-                        Navigator.pushNamed(context, SignUpOrSignInScreen.id);
-                        debugPrint('Go to next page');
-                      }
+                        Navigator.pushNamed(context, SetupScreen.id);
                     },
                     child: AnimatedContainer(
                       padding: const EdgeInsets.symmetric(
