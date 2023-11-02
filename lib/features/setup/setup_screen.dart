@@ -1,6 +1,7 @@
 import 'package:dating_app/constants/image_paths.dart';
 import 'package:dating_app/features/setup/setup_birthday_page.dart';
 import 'package:dating_app/features/setup/setup_gender_page.dart';
+import 'package:dating_app/features/setup/setup_height_page.dart';
 import 'package:dating_app/features/setup/setup_location_page.dart';
 import 'package:dating_app/features/setup/setup_name_page.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _SetupScreenState extends State<SetupScreen> {
     SetupBirthdayPage(),
     SetupLocationPage(),
     SetupGenderPage(),
+    SetupHeightPage(),
   ];
 
   @override
