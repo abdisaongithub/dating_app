@@ -192,8 +192,8 @@ class _SetupBirthdayPageState extends State<SetupBirthdayPage> {
                     InkWell(
                       onTap: () {
                         // Navigator.pushNamed(context, LandingScreen.id);
-                        pageController.animateToPage(
-                          0,
+
+                        pageController.previousPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.bounceIn,
                         );
@@ -223,8 +223,8 @@ class _SetupBirthdayPageState extends State<SetupBirthdayPage> {
                     InkWell(
                       onTap: () {
                         // Navigator.pushNamed(context, LandingScreen.id);
-                        pageController.animateToPage(
-                          2,
+
+                        pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.bounceIn,
                         );

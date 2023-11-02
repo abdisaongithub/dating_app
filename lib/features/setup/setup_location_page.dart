@@ -52,7 +52,12 @@ class _SetupLocationPageState extends State<SetupLocationPage> {
                 ],
               ),
               const SizedBox(height: 10),
-              const Text('Where do you live?'),
+              Row(
+                children: [
+                  const SizedBox(width: 20,),
+                  const Text('Where do you live?'),
+                ],
+              ),
               const SizedBox(height: 10),
               Center(
                 child: Image.asset(
@@ -68,8 +73,8 @@ class _SetupLocationPageState extends State<SetupLocationPage> {
                     InkWell(
                       onTap: () {
                         // Navigator.pushNamed(context, LandingScreen.id);
-                        pageController.animateToPage(
-                          1,
+
+                        pageController.previousPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.bounceIn,
                         );
@@ -99,8 +104,7 @@ class _SetupLocationPageState extends State<SetupLocationPage> {
                     InkWell(
                       onTap: () {
                         // Navigator.pushNamed(context, LandingScreen.id);
-                        pageController.animateToPage(
-                          4,
+                        pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.bounceIn,
                         );

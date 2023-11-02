@@ -121,8 +121,8 @@ class _SetupNamePageState extends State<SetupNamePage> {
                     InkWell(
                       onTap: () {
                         // Navigator.pushNamed(context, LandingScreen.id);
-                        pageController.animateToPage(
-                          1,
+
+                        pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.bounceIn,
                         );

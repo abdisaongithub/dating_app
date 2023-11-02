@@ -14,4 +14,5 @@ class PngPaths {
   static const art1 = "$art/art/art1.png";
   static const pin = "$art/art/art-pin.png";
   static const map = "$art/art/art-map.png";
+  static const userFill = "$icon/icons/user-fill.png";
 }
