@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'setup_ethnicity_page.dart';
 import 'setup_family_plan.dart';
+import 'setup_hometown_page.dart';
 import 'setup_kids_page.dart';
 
 class SetupScreen extends StatefulWidget {
@@ -34,6 +35,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupEthnicityPage(),
     const SetupKidsPage(),
     const SetupFamilyPlanPage(),
+    const SetupHometownPage(),
   ];
 
   @override

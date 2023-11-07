@@ -1,19 +1,26 @@
+import 'package:dating_app/constants/image_paths.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/widgets/big_text.dart';
-import '../../constants/image_paths.dart';
 import 'setup_screen.dart';
 
-class SetupKidsPage extends StatefulWidget {
-  static String id = 'SetupKidsPage';
-  const SetupKidsPage({Key? key}) : super(key: key);
+class SetupHometownPage extends StatefulWidget {
+  static String id = 'SetupHometownPage';
+
+  const SetupHometownPage({Key? key}) : super(key: key);
 
   @override
-  _SetupKidsPageState createState() => _SetupKidsPageState();
+  _SetupHometownPageState createState() => _SetupHometownPageState();
 }
 
-class _SetupKidsPageState extends State<SetupKidsPage> {
-  bool kids = false;
+class _SetupHometownPageState extends State<SetupHometownPage> {
+  List<List<dynamic>> ethnicity = [
+    ['Addis Ababa', true],
+    ['Adama', false],
+    ['Sheger', false],
+    ['Bahir Dar', false],
+    ['Jimma', false],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +30,18 @@ class _SetupKidsPageState extends State<SetupKidsPage> {
         width: MediaQuery.sizeOf(context).width,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             const SizedBox(height: 80),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BigText(
-                  text: 'Kids',
+                  text: 'Hometown',
                   orangeBackground: false,
                   fontSize: 40,
-                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  width: MediaQuery.sizeOf(context).width * 0.6,
                 ),
                 Image.asset(
                   PngPaths.userFill,
@@ -58,95 +66,89 @@ class _SetupKidsPageState extends State<SetupKidsPage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Got any kids?',
+              'Which is closest to hometown?',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
               ),
             ),
             const SizedBox(height: 20),
-
-            Center(
+            Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                border: Border.all(
+                  color: Colors.grey,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        kids = true;
-                      });
-                      // Navigator.pushNamed(context, LandingScreen.id);
-                      // pageController.animateToPage(
-                      //   1,
-                      //   duration: const Duration(milliseconds: 300),
-                      //   curve: Curves.bounceIn,
-                      // );
-                    },
-                    child: AnimatedContainer(
-                      width: 120,
-                      height: 50,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: kids ? const Color.fromRGBO(0, 0, 0, 0.8) : const Color.fromRGBO(222, 222, 222, 1),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      duration: const Duration(milliseconds: 300),
-                      child: Center(
-                        child: Text(
-                          'Yes',
-                          style: TextStyle(
-                            color: kids ? Colors.white : Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Hometown',
+                    style: TextStyle(
+                      color: Colors.grey.withOpacity(0.8),
                     ),
                   ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        kids = false;
-                      });
-                      // Navigator.pushNamed(context, LandingScreen.id);
-                      // pageController.animateToPage(
-                      //   3,
-                      //   duration: const Duration(milliseconds: 300),
-                      //   curve: Curves.bounceIn,
-                      // );
-                    },
-                    child: AnimatedContainer(
-                      width: 120,
-                      height: 50,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: !kids ? const Color.fromRGBO(0, 0, 0, 0.8) : const Color.fromRGBO(222, 222, 222, 1),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      duration: const Duration(milliseconds: 300),
-                      child: Center(
-                        child: Text(
-                          'No',
-                          style: TextStyle(
-                            color: kids ? Colors.black : Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                  const Expanded(
+                    child: SizedBox(),
+                  ),
+                  const RotatedBox(
+                    quarterTurns: 1,
+                    child: Icon(
+                      Icons.chevron_right,
                     ),
+                  ),
+                  const SizedBox(
+                    width: 10,
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            Container(
+              height: MediaQuery.sizeOf(context).width,
+              width: MediaQuery.sizeOf(context).width,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: <Widget>[
+                    for (var eth in ethnicity)
+                      Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(eth[0]),
+                          const Expanded(
+                            child: SizedBox(),
+                          ),
+                          Checkbox(
+                            value: eth[1],
+                            onChanged: (bool? change) {
+                              setState(() {
+                                // eth[1] = !eth
+                              });
+                            },
+                            activeColor: Colors.grey,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                        ],
+                      )
+                  ],
+                ),
+              ),
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 1,
+            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
