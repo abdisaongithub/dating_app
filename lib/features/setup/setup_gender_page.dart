@@ -59,7 +59,7 @@ class _SetupGenderPageState extends State<SetupGenderPage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Where do you live?',
+              'Which gender are you?',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,

@@ -6,6 +6,8 @@ import 'package:dating_app/features/setup/setup_location_page.dart';
 import 'package:dating_app/features/setup/setup_name_page.dart';
 import 'package:flutter/material.dart';
 
+import 'setup_ethnicity_page.dart';
+
 class SetupScreen extends StatefulWidget {
   static String id = 'OnboardingScreen';
 
@@ -22,11 +24,12 @@ PageController pageController = PageController(
 
 class _SetupScreenState extends State<SetupScreen> {
   List<Widget> pages = [
-    SetupNamePage(),
-    SetupBirthdayPage(),
-    SetupLocationPage(),
-    SetupGenderPage(),
-    SetupHeightPage(),
+    const SetupNamePage(),
+    const SetupBirthdayPage(),
+    const SetupLocationPage(),
+    const SetupGenderPage(),
+    const SetupHeightPage(),
+    const SetupEthnicityPage(),
   ];
 
   @override
