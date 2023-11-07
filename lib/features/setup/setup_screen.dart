@@ -7,6 +7,7 @@ import 'package:dating_app/features/setup/setup_name_page.dart';
 import 'package:flutter/material.dart';
 
 import 'setup_ethnicity_page.dart';
+import 'setup_family_plan.dart';
 import 'setup_kids_page.dart';
 
 class SetupScreen extends StatefulWidget {
@@ -32,6 +33,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupHeightPage(),
     const SetupEthnicityPage(),
     const SetupKidsPage(),
+    const SetupFamilyPlanPage(),
   ];
 
   @override
