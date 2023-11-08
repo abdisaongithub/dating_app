@@ -4,17 +4,17 @@ import '../../common/widgets/big_text.dart';
 import '../../constants/image_paths.dart';
 import 'setup_screen.dart';
 
-class SetupGymPage extends StatefulWidget {
-  static String id = 'SetupGymPage';
+class SetupOtherSportsPage extends StatefulWidget {
+  static String id = 'SetupOtherSportsPage';
 
-  const SetupGymPage({Key? key}) : super(key: key);
+  const SetupOtherSportsPage({Key? key}) : super(key: key);
 
   @override
-  _SetupGymPageState createState() => _SetupGymPageState();
+  _SetupOtherSportsPageState createState() => _SetupOtherSportsPageState();
 }
 
-class _SetupGymPageState extends State<SetupGymPage> {
-  List<List<dynamic>> gym = [
+class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
+  List<List<dynamic>> otherSports = [
     ['Daily', true],
     ['Bi Weekly', false],
     ['Tri Weekly', false],
@@ -42,7 +42,7 @@ class _SetupGymPageState extends State<SetupGymPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BigText(
-                  text: 'Gym',
+                  text: 'Other Sports',
                   orangeBackground: false,
                   fontSize: 40,
                   width: MediaQuery.sizeOf(context).width * 0.6,
@@ -70,7 +70,7 @@ class _SetupGymPageState extends State<SetupGymPage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Do you smoke gym?',
+              'Do you like other sports?',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
@@ -92,7 +92,7 @@ class _SetupGymPageState extends State<SetupGymPage> {
                     width: 10,
                   ),
                   Text(
-                    'Gym',
+                    'Other Sports',
                     style: TextStyle(
                       color: Colors.grey.withOpacity(0.8),
                     ),
@@ -122,7 +122,7 @@ class _SetupGymPageState extends State<SetupGymPage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: <Widget>[
-                    for (var eth in gym)
+                    for (var eth in otherSports)
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
