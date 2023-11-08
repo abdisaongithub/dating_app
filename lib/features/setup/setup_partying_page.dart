@@ -4,17 +4,17 @@ import '../../common/widgets/big_text.dart';
 import '../../constants/image_paths.dart';
 import 'setup_screen.dart';
 
-class SetupClubbingPage extends StatefulWidget {
-  static String id = 'SetupClubbingPage';
+class SetupPartyingPage extends StatefulWidget {
+  static String id = 'SetupPartyingPage';
 
-  const SetupClubbingPage({Key? key}) : super(key: key);
+  const SetupPartyingPage({Key? key}) : super(key: key);
 
   @override
-  _SetupClubbingPageState createState() => _SetupClubbingPageState();
+  _SetupPartyingPageState createState() => _SetupPartyingPageState();
 }
 
-class _SetupClubbingPageState extends State<SetupClubbingPage> {
-  List<List<dynamic>> clubbing = [
+class _SetupPartyingPageState extends State<SetupPartyingPage> {
+  List<List<dynamic>> partying = [
     ['Daily', true],
     ['Weekly', false],
     ['Special Occasions', false],
@@ -41,7 +41,7 @@ class _SetupClubbingPageState extends State<SetupClubbingPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BigText(
-                  text: 'Clubbing',
+                  text: 'Partying',
                   orangeBackground: false,
                   fontSize: 40,
                   width: MediaQuery.sizeOf(context).width * 0.6,
@@ -69,7 +69,7 @@ class _SetupClubbingPageState extends State<SetupClubbingPage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Do you smoke clubbing?',
+              'Do you smoke partying?',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
@@ -91,7 +91,7 @@ class _SetupClubbingPageState extends State<SetupClubbingPage> {
                     width: 10,
                   ),
                   Text(
-                    'Clubbing',
+                    'Partying',
                     style: TextStyle(
                       color: Colors.grey.withOpacity(0.8),
                     ),
@@ -121,7 +121,7 @@ class _SetupClubbingPageState extends State<SetupClubbingPage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: <Widget>[
-                    for (var eth in clubbing)
+                    for (var eth in partying)
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

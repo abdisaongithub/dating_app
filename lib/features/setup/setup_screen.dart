@@ -1,11 +1,13 @@
 import 'package:dating_app/constants/image_paths.dart';
 import 'package:dating_app/features/setup/setup_alcohol_page.dart';
 import 'package:dating_app/features/setup/setup_birthday_page.dart';
+import 'package:dating_app/features/setup/setup_clubbing_page.dart';
 import 'package:dating_app/features/setup/setup_education_page.dart';
 import 'package:dating_app/features/setup/setup_gender_page.dart';
 import 'package:dating_app/features/setup/setup_height_page.dart';
 import 'package:dating_app/features/setup/setup_location_page.dart';
 import 'package:dating_app/features/setup/setup_name_page.dart';
+import 'package:dating_app/features/setup/setup_partying_page.dart';
 import 'package:dating_app/features/setup/setup_politics_page.dart';
 import 'package:dating_app/features/setup/setup_religion_page.dart';
 import 'package:dating_app/features/setup/setup_smoking_page.dart';
@@ -52,6 +54,8 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupSmokingPage(),
     const SetupWeedPage(),
     const SetupVapePage(),
+    const SetupClubbingPage(),
+    const SetupPartyingPage(),
   ];
 
   @override
