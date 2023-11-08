@@ -3,6 +3,7 @@ import 'package:dating_app/features/setup/setup_alcohol_page.dart';
 import 'package:dating_app/features/setup/setup_birthday_page.dart';
 import 'package:dating_app/features/setup/setup_clubbing_page.dart';
 import 'package:dating_app/features/setup/setup_education_page.dart';
+import 'package:dating_app/features/setup/setup_food_page.dart';
 import 'package:dating_app/features/setup/setup_gender_page.dart';
 import 'package:dating_app/features/setup/setup_gym_page.dart';
 import 'package:dating_app/features/setup/setup_height_page.dart';
@@ -66,6 +67,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupMoviesPage(),
     const SetupMusicPage(),
     const SetupJokesPage(),
+    const SetupFoodPage(),
   ];
 
   @override
