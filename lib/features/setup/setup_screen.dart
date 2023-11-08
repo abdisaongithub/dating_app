@@ -8,6 +8,7 @@ import 'package:dating_app/features/setup/setup_location_page.dart';
 import 'package:dating_app/features/setup/setup_name_page.dart';
 import 'package:dating_app/features/setup/setup_politics_page.dart';
 import 'package:dating_app/features/setup/setup_religion_page.dart';
+import 'package:dating_app/features/setup/setup_smoking_page.dart';
 import 'package:flutter/material.dart';
 
 import 'setup_ethnicity_page.dart';
@@ -46,6 +47,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupReligionPage(),
     const SetupPoliticsPage(),
     const SetupAlcoholPage(),
+    const SetupSmokingPage(),
   ];
 
   @override
