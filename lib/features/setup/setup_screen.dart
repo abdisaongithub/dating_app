@@ -14,6 +14,7 @@ import 'package:dating_app/features/setup/setup_music_page.dart';
 import 'package:dating_app/features/setup/setup_name_page.dart';
 import 'package:dating_app/features/setup/setup_other_sports_page.dart';
 import 'package:dating_app/features/setup/setup_partying_page.dart';
+import 'package:dating_app/features/setup/setup_picture_page.dart';
 import 'package:dating_app/features/setup/setup_politics_page.dart';
 import 'package:dating_app/features/setup/setup_religion_page.dart';
 import 'package:dating_app/features/setup/setup_smoking_page.dart';
@@ -68,6 +69,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupMusicPage(),
     const SetupJokesPage(),
     const SetupFoodPage(),
+    const SetupPicturesPage(),
   ];
 
   @override
