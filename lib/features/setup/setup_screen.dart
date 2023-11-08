@@ -1,32 +1,32 @@
-import 'package:dating_app/constants/image_paths.dart';
-import 'package:dating_app/features/setup/setup_alcohol_page.dart';
-import 'package:dating_app/features/setup/setup_birthday_page.dart';
-import 'package:dating_app/features/setup/setup_clubbing_page.dart';
-import 'package:dating_app/features/setup/setup_education_page.dart';
-import 'package:dating_app/features/setup/setup_food_page.dart';
-import 'package:dating_app/features/setup/setup_gender_page.dart';
-import 'package:dating_app/features/setup/setup_gym_page.dart';
-import 'package:dating_app/features/setup/setup_height_page.dart';
-import 'package:dating_app/features/setup/setup_jokes_page.dart';
-import 'package:dating_app/features/setup/setup_location_page.dart';
-import 'package:dating_app/features/setup/setup_movies_page.dart';
-import 'package:dating_app/features/setup/setup_music_page.dart';
-import 'package:dating_app/features/setup/setup_name_page.dart';
-import 'package:dating_app/features/setup/setup_other_sports_page.dart';
-import 'package:dating_app/features/setup/setup_partying_page.dart';
-import 'package:dating_app/features/setup/setup_picture_page.dart';
-import 'package:dating_app/features/setup/setup_politics_page.dart';
-import 'package:dating_app/features/setup/setup_religion_page.dart';
-import 'package:dating_app/features/setup/setup_smoking_page.dart';
-import 'package:dating_app/features/setup/setup_weed_page.dart';
-import 'package:dating_app/features/setup/setup_vape_page.dart';
+import 'package:dating_app/features/setup/setup_bio_page.dart';
 import 'package:flutter/material.dart';
 
+import 'setup_alcohol_page.dart';
+import 'setup_birthday_page.dart';
+import 'setup_clubbing_page.dart';
+import 'setup_education_page.dart';
 import 'setup_ethnicity_page.dart';
 import 'setup_family_plan.dart';
+import 'setup_food_page.dart';
+import 'setup_gender_page.dart';
+import 'setup_gym_page.dart';
+import 'setup_height_page.dart';
 import 'setup_hometown_page.dart';
 import 'setup_job_page.dart';
+import 'setup_jokes_page.dart';
 import 'setup_kids_page.dart';
+import 'setup_location_page.dart';
+import 'setup_movies_page.dart';
+import 'setup_music_page.dart';
+import 'setup_name_page.dart';
+import 'setup_other_sports_page.dart';
+import 'setup_partying_page.dart';
+import 'setup_pictures_page.dart';
+import 'setup_politics_page.dart';
+import 'setup_religion_page.dart';
+import 'setup_smoking_page.dart';
+import 'setup_vape_page.dart';
+import 'setup_weed_page.dart';
 
 class SetupScreen extends StatefulWidget {
   static String id = 'SetupScreen';
@@ -70,6 +70,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupJokesPage(),
     const SetupFoodPage(),
     const SetupPicturesPage(),
+    const SetupBioPage(),
   ];
 
   @override
