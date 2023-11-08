@@ -1,4 +1,5 @@
 import 'package:dating_app/constants/image_paths.dart';
+import 'package:dating_app/features/setup/setup_alcohol_page.dart';
 import 'package:dating_app/features/setup/setup_birthday_page.dart';
 import 'package:dating_app/features/setup/setup_education_page.dart';
 import 'package:dating_app/features/setup/setup_gender_page.dart';
@@ -44,6 +45,7 @@ class _SetupScreenState extends State<SetupScreen> {
     const SetupEducationPage(),
     const SetupReligionPage(),
     const SetupPoliticsPage(),
+    const SetupAlcoholPage(),
   ];
 
   @override
