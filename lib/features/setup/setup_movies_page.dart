@@ -4,23 +4,23 @@ import '../../common/widgets/big_text.dart';
 import '../../constants/image_paths.dart';
 import 'setup_screen.dart';
 
-class SetupOtherSportsPage extends StatefulWidget {
-  static String id = 'SetupOtherSportsPage';
+class SetupMoviesPage extends StatefulWidget {
+  static String id = 'SetupMoviesPage';
 
-  const SetupOtherSportsPage({Key? key}) : super(key: key);
+  const SetupMoviesPage({Key? key}) : super(key: key);
 
   @override
-  _SetupOtherSportsPageState createState() => _SetupOtherSportsPageState();
+  _SetupMoviesPageState createState() => _SetupMoviesPageState();
 }
 
-class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
-  List<List<dynamic>> otherSports = [
-    ['Daily', true],
-    ['Bi Weekly', false],
-    ['Tri Weekly', false],
-    ['Never', false],
-    ['Gym Hater', false],
-    ['Gym Enjoyer', false],
+class _SetupMoviesPageState extends State<SetupMoviesPage> {
+  List<List<dynamic>> movies = [
+    ['Cloudy With The Chance of Meatballs', true],
+    ['Iron Man', false],
+    ['Iron Man 2', false],
+    ['Iron Man 3', false],
+    ['Spartacus', false],
+    ['300', false],
   ];
 
   @override
@@ -42,7 +42,7 @@ class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BigText(
-                  text: 'Other Sports',
+                  text: 'Movies',
                   orangeBackground: false,
                   fontSize: 40,
                   width: MediaQuery.sizeOf(context).width * 0.75,
@@ -70,7 +70,7 @@ class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Do you like other sports?',
+              'Your favourite movies?',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
@@ -92,7 +92,7 @@ class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
                     width: 10,
                   ),
                   Text(
-                    'Other Sports',
+                    'Movies',
                     style: TextStyle(
                       color: Colors.grey.withOpacity(0.8),
                     ),
@@ -122,7 +122,7 @@ class _SetupOtherSportsPageState extends State<SetupOtherSportsPage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: <Widget>[
-                    for (var eth in otherSports)
+                    for (var eth in movies)
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
