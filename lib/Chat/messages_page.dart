@@ -58,60 +58,6 @@ class _MessagesPageState extends State<MessagesPage> {
                   indent: 20,
                   endIndent: 20,
                 ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                MessageListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
               ],
             ),
           ),
@@ -134,40 +80,41 @@ class MessageListTile extends StatelessWidget {
         horizontal: 20,
       ),
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 64,
       decoration: const BoxDecoration(
           // color: Colors.grey,
           // borderRadius: BorderRadius.circular(10),
           ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 30,
             backgroundImage: AssetImage('assets/images/landing.png'),
           ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                'Alex',
+                'Teddy',
                 style: TextStyle(
                   fontSize: 16,
                 ),
               ),
               Text(
-                'Alex Alex Alex Alex Alex Alex ',
+                'Addis Ababa, Bole',
                 style: TextStyle(
                   fontSize: 12,
                 ),
               ),
               Text(
-                'Alex',
+                'online',
                 style: TextStyle(
                   fontSize: 12,
+                  color: Colors.green,
                 ),
               ),
             ],

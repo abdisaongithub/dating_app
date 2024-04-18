@@ -9,6 +9,19 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+
+  List<EventData> events =[
+    EventData(title: 'Batch /10 get Together', description: 'Get together event for 2010 batch', guests: 'Abdisa, Biniyam, Kebede, Kebedech ...'),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+    // EventData(title: '', description: '', guests: ''),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +39,7 @@ class _EventsPageState extends State<EventsPage> {
               children: [
                 GestureDetector(
                   child: const Text(
-                    'Hungry',
+                    'All Events',
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.w600,
@@ -46,72 +59,25 @@ class _EventsPageState extends State<EventsPage> {
           Expanded(
             child: ListView(
               scrollDirection: Axis.vertical,
-              children: const [
+              children: [
                 Divider(
                   color: Colors.black,
                   indent: 20,
                   endIndent: 20,
                 ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                EventListTile(),
-                Divider(
-                  color: Colors.black,
-                  indent: 20,
-                  endIndent: 20,
-                ),
+                for(var event in events)
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      EventListTile(eventData: event),
+                      const Divider(
+                        color: Colors.black,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                    ],
+                  ),
+
               ],
             ),
           ),
@@ -123,8 +89,11 @@ class _EventsPageState extends State<EventsPage> {
 
 class EventListTile extends StatelessWidget {
   const EventListTile({
-    Key? key,
-  }) : super(key: key);
+    super.key, required this.eventData,
+  });
+
+  final EventData eventData;
+
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +103,7 @@ class EventListTile extends StatelessWidget {
         horizontal: 20,
       ),
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 64,
       decoration: const BoxDecoration(
           // color: Colors.grey,
           // borderRadius: BorderRadius.circular(10),
@@ -144,22 +113,22 @@ class EventListTile extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                'Hungry Event',
-                style: TextStyle(
+                eventData.title,
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
               Text(
-                'Hunger Games Hunger Games Hunger Games ',
-                style: TextStyle(
+                eventData.description,
+                style: const TextStyle(
                   fontSize: 12,
                 ),
               ),
               Text(
-                'Alex, Kebe, Abe, Bini, Abdi',
-                style: TextStyle(
+                eventData.guests,
+                style: const TextStyle(
                   fontSize: 12,
                 ),
               ),
@@ -169,6 +138,14 @@ class EventListTile extends StatelessWidget {
       ),
     );
   }
+}
+
+class EventData{
+  final String title;
+  final String description;
+  final String guests;
+
+  EventData({required this.title, required this.description, required this.guests});
 }
 
 class FilterEvents extends StatefulWidget {
